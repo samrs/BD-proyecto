@@ -20,7 +20,7 @@ create table comercial(
     pasajeros_ordinarios number(3,0) not null,
     pasajeros_discapacitados number(3,0) not null,
     pasajeros_vip number(3,0) not null,
-    pasajeros_total as ( pasajeros_ordinarios + pasajeros_discapacitados + pasajeros_vip) virtual 
+    pasajeros_total as ( pasajeros_ordinarios + pasajeros_discapacitados + pasajeros_vip) virtual,
     constraint comercial_pk primary key (aeronave_id),
     constraint co_aeronave_id_fk foreign key (aeronave_id)
     references aeronave(aeronave_id)
@@ -213,12 +213,12 @@ create table historico_estatus_vuelo(
 );
 -- table: ubicacion 
 create table ubicacion(
-    ubicacion_id number(40,0) not null,
+    vuelo_id number(40,0) not null,
     fecha date default sysdate,
     latitud  number(10,7) not null,
     longitud number(10,7) not null,
     vuelo_id number(40,0) not null,
-    constraint ubicacion_pk primary key (ubicacion_id),
+    constraint ubicacion_pk primary key (vuelo_id),
     constraint ub_vuelo_id_fk foreign key (vuelo_id)
     references vuelo(vuelo_id)
 );
