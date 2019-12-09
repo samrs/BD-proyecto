@@ -9,7 +9,7 @@ create table aeronave(
     es_carga number(1,0) not null,
     es_comercial number(1,0) not null,
     modelo varchar2(50) not null,
-    especificaciones_pdf varchar2(38) not null,
+    especificaciones_pdf varchar2(38) null,
     constraint aeronave_pk primary key (aeronave_id),
     constraint ae_es_carga_es_comercial_chk 
     check ((es_carga,es_comercial) in ((1,0),(0,1),(1,1)))
