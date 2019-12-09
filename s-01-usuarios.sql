@@ -17,7 +17,7 @@ create user srs_proy_invitado identified by invitado;
 Prompt creando roles
 create role rol_admin;
 grant create session, create table, create view, create synonym, create public synonym,
-create sequence, create trigger, create procedure to rol_admin;
+create sequence, create trigger, create procedure, create type to rol_admin;
 grant read, write on directory tmp_dir to rol_admin;
 create role rol_invitado;
 grant create session to rol_invitado;
