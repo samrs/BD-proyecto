@@ -722,6 +722,7 @@ values
 (seq_pasajero_id.nextval, 'GODINEZ', 'JIMENEZ', 'PATRICIA', 'patrigod@mail.com', to_date('720214','yymmdd'), 'GOJP720214MGRDMT05');
 
 
+<<<<<<< HEAD
 insert into vuelo
 (vuelo_id, aeronave_id, numero_vuelo, sala_abordar, fecha_salida, fecha_llegada, 
 aeropuerto_destino_id, aeropuerto_origen_id, estatus_vuelo_id)
@@ -738,3 +739,288 @@ insert into pasajero_vuelo
 (pasajero_vuelo_id, folio_pase_abordar, asiento, atencion, se_presento, pasajero_id, vuelo_id)
 values
 (seq_pasajero_vuelo_id.nextval, 'AEFR1459', 25, 'Ninguna', null, 2, 0);
+=======
+
+
+
+
+
+
+-- INSERTANDO Y "LLENANDO" UN VUELO COMERCIAL
+--crear vuelo
+insert into vuelo
+(vuelo_id, aeronave_id, numero_vuelo, sala_abordar, fecha_salida, fecha_llegada,
+aeropuerto_destino_id, aeropuerto_origen_id, estatus_vuelo_id)
+values(seq_vuelo_id.nextval, 1, seq_numero_vuelo.nextval, 75, to_date('05/05/2018 10:05','dd/mm/yyyy hh24:mi'), to_date('05/05/2018 12:35','dd/mm/yyyy hh24:mi'),
+4, 3, 1);
+
+--Registrar en histórico
+insert into historico_estatus_vuelo
+(historico_estatus_vuelo_id, vuelo_id, estatus_vuelo_id, fecha_estatus)
+values
+(seq_historico_status_vuelo_id.nextval, 0, 1, to_date('10/01/2018','dd/mm/yyyy'))
+;
+
+-- AÑADIR TRIPULACION
+--insertar piloto
+insert into tripulacion_vuelo
+(tripulacion_vuelo_id, vuelo_id, empleado_id, puntos)
+values
+(seq_tripulacion_vuelo_id.nextval, seq_vuelo_id.currval, 6, 10);
+
+--copiloto
+insert into tripulacion_vuelo
+(tripulacion_vuelo_id, vuelo_id, empleado_id, puntos)
+values
+(seq_tripulacion_vuelo_id.nextval, seq_vuelo_id.currval, 5, 10);
+
+--jefe sobrecargos
+insert into tripulacion_vuelo
+(tripulacion_vuelo_id, vuelo_id, empleado_id, puntos)
+values
+(seq_tripulacion_vuelo_id.nextval, seq_vuelo_id.currval, 3, 10);
+
+
+--sobrecargo
+insert into tripulacion_vuelo
+(tripulacion_vuelo_id, vuelo_id, empleado_id, puntos)
+values
+(seq_tripulacion_vuelo_id.nextval, seq_vuelo_id.currval, 0, 10);
+--sobrecargo
+insert into tripulacion_vuelo
+(tripulacion_vuelo_id, vuelo_id, empleado_id, puntos)
+values
+(seq_tripulacion_vuelo_id.nextval, seq_vuelo_id.currval, 4, 10);
+-- Añadir pasajero
+insert into pasajero_vuelo
+(pasajero_vuelo_id, vuelo_id, pasajero_id, folio_pase_abordar, se_presento, asiento, atencion)
+values
+(seq_pasajero_vuelo_id.nextval, seq_vuelo_id.currval,0,'AFV-01-000', 1, 20, 'No requiere');
+insert into pase_abordar
+(pase_abordar_id, vuelo_id, pasajero_vuelo_id, fecha_impresion)
+values 
+(seq_pase_abordar_id.nextval, seq_vuelo_id.currval, seq_pasajero_vuelo_id.currval, to_date('01/05/2018 10:50','dd/mm/yy hh24:mi'));
+insert into maleta
+(pasajero_vuelo_id, numero, peso)
+values
+(seq_pasajero_vuelo_id.currval,1, 20);
+
+
+
+
+-- Añadir pasajero
+insert into pasajero_vuelo
+(pasajero_vuelo_id, vuelo_id, pasajero_id, folio_pase_abordar, se_presento, asiento, atencion)
+values
+(seq_pasajero_vuelo_id.nextval, seq_vuelo_id.currval,1,'AFV-01-001', 1, 20, 'No requiere');
+insert into pase_abordar
+(pase_abordar_id, vuelo_id, pasajero_vuelo_id, fecha_impresion)
+values 
+(seq_pase_abordar_id.nextval, seq_vuelo_id.currval, seq_pasajero_vuelo_id.currval, to_date('01/05/2018 10:50','dd/mm/yy hh24:mi'));
+insert into maleta
+(pasajero_vuelo_id, numero, peso)
+values
+(seq_pasajero_vuelo_id.currval,1, 20);
+
+
+-- Añadir pasajero
+insert into pasajero_vuelo
+(pasajero_vuelo_id, vuelo_id, pasajero_id, folio_pase_abordar, se_presento, asiento, atencion)
+values
+(seq_pasajero_vuelo_id.nextval, seq_vuelo_id.currval,2,'AFV-01-002', 1, 20, 'No requiere');
+insert into pase_abordar
+(pase_abordar_id, vuelo_id, pasajero_vuelo_id, fecha_impresion)
+values 
+(seq_pase_abordar_id.nextval, seq_vuelo_id.currval, seq_pasajero_vuelo_id.currval, to_date('01/05/2018 10:50','dd/mm/yy hh24:mi'));
+insert into maleta
+(pasajero_vuelo_id, numero, peso)
+values
+(seq_pasajero_vuelo_id.currval,1, 20);
+
+
+
+
+
+
+
+
+
+
+-- INSERTANDO Y "LLENANDO" UN VUELO COMERCIAL
+--crear vuelo
+insert into vuelo
+(vuelo_id, aeronave_id, numero_vuelo, sala_abordar, fecha_salida, fecha_llegada,
+aeropuerto_destino_id, aeropuerto_origen_id, estatus_vuelo_id)
+values(seq_vuelo_id.nextval, 0, seq_numero_vuelo.nextval, 32, to_date('05/02/2018 09:05','dd/mm/yyyy hh24:mi'), to_date('05/02/2018 12:35','dd/mm/yyyy hh24:mi'),
+3, 5, 1);
+
+--Registrar en histórico
+insert into historico_estatus_vuelo
+(historico_estatus_vuelo_id, vuelo_id, estatus_vuelo_id, fecha_estatus)
+values
+(seq_historico_status_vuelo_id.nextval, seq_vuelo_id.currval, 1, to_date('10/01/2018','dd/mm/yyyy'))
+;
+
+-- AÑADIR TRIPULACION
+--insertar piloto
+insert into tripulacion_vuelo
+(tripulacion_vuelo_id, vuelo_id, empleado_id, puntos)
+values
+(seq_tripulacion_vuelo_id.nextval, seq_vuelo_id.currval, 12, 10);
+
+--copiloto
+insert into tripulacion_vuelo
+(tripulacion_vuelo_id, vuelo_id, empleado_id, puntos)
+values
+(seq_tripulacion_vuelo_id.nextval, seq_vuelo_id.currval, 10, 10);
+
+--jefe sobrecargos
+insert into tripulacion_vuelo
+(tripulacion_vuelo_id, vuelo_id, empleado_id, puntos)
+values
+(seq_tripulacion_vuelo_id.nextval, seq_vuelo_id.currval, 7, 10);
+
+
+--sobrecargo
+insert into tripulacion_vuelo
+(tripulacion_vuelo_id, vuelo_id, empleado_id, puntos)
+values
+(seq_tripulacion_vuelo_id.nextval, seq_vuelo_id.currval, 8, 10);
+--sobrecargo
+insert into tripulacion_vuelo
+(tripulacion_vuelo_id, vuelo_id, empleado_id, puntos)
+values
+(seq_tripulacion_vuelo_id.nextval, seq_vuelo_id.currval, 9, 10);
+-- Añadir pasajero
+insert into pasajero_vuelo
+(pasajero_vuelo_id, vuelo_id, pasajero_id, folio_pase_abordar, se_presento, asiento, atencion)
+values
+(seq_pasajero_vuelo_id.nextval, seq_vuelo_id.currval,3,'AFV-01-003', 1, 10, 'No requiere');
+insert into pase_abordar
+(pase_abordar_id, vuelo_id, pasajero_vuelo_id, fecha_impresion)
+values 
+(seq_pase_abordar_id.nextval, seq_vuelo_id.currval, seq_pasajero_vuelo_id.currval, to_date('01/05/2018 10:50','dd/mm/yy hh24:mi'));
+insert into maleta
+(pasajero_vuelo_id, numero, peso)
+values
+(seq_pasajero_vuelo_id.currval,1, 20);
+
+
+
+
+-- Añadir pasajero
+insert into pasajero_vuelo
+(pasajero_vuelo_id, vuelo_id, pasajero_id, folio_pase_abordar, se_presento, asiento, atencion)
+values
+(seq_pasajero_vuelo_id.nextval, seq_vuelo_id.currval,4,'AFV-01-004', 1, 20, 'No requiere');
+insert into pase_abordar
+(pase_abordar_id, vuelo_id, pasajero_vuelo_id, fecha_impresion)
+values 
+(seq_pase_abordar_id.nextval, seq_vuelo_id.currval, seq_pasajero_vuelo_id.currval, to_date('01/05/2018 10:50','dd/mm/yy hh24:mi'));
+insert into maleta
+(pasajero_vuelo_id, numero, peso)
+values
+(seq_pasajero_vuelo_id.currval,1, 20);
+
+
+-- Añadir pasajero
+insert into pasajero_vuelo
+(pasajero_vuelo_id, vuelo_id, pasajero_id, folio_pase_abordar, se_presento, asiento, atencion)
+values
+(seq_pasajero_vuelo_id.nextval, seq_vuelo_id.currval,5,'AFV-01-005', 1, 24, 'No requiere');
+insert into pase_abordar
+(pase_abordar_id, vuelo_id, pasajero_vuelo_id, fecha_impresion)
+values 
+(seq_pase_abordar_id.nextval, seq_vuelo_id.currval, seq_pasajero_vuelo_id.currval, to_date('01/05/2018 10:50','dd/mm/yy hh24:mi'));
+insert into maleta
+(pasajero_vuelo_id, numero, peso)
+values
+(seq_pasajero_vuelo_id.currval,1, 20);
+
+
+
+
+
+
+-- VUELO DE CARGA Y PAQUETES
+insert into vuelo
+(vuelo_id, aeronave_id, numero_vuelo, sala_abordar, fecha_salida, fecha_llegada,
+aeropuerto_destino_id, aeropuerto_origen_id, estatus_vuelo_id)
+values
+(seq_vuelo_id.nextval, 4, seq_numero_vuelo.nextval, 4, to_date('2018/08/10 21:20','yyyy/mm/dd hh24:mi'),
+to_date('2018/08/10 23:20','yyyy/mm/dd hh24:mi'), 2,4,1);
+--Registrar en histórico
+insert into historico_estatus_vuelo
+(historico_estatus_vuelo_id, vuelo_id, estatus_vuelo_id, fecha_estatus)
+values
+(seq_historico_status_vuelo_id.nextval, seq_vuelo_id.currval, 1, to_date('10/01/2018','dd/mm/yyyy'))
+;
+
+
+
+
+--añadir paquete
+insert into paquete
+(paquete_id, tipo_paquete_id, folio, peso)
+values
+(seq_paquete_id.nextval, 3, 'AF-P-000', 8);
+
+insert into paquete_vuelo
+(paquete_vuelo_id, vuelo_id, paquete_id)
+values
+(seq_paquete_vuelo_id.nextval, seq_vuelo_id.currval, seq_paquete_id.currval);
+
+
+-- añadir paquete
+insert into paquete
+(paquete_id, tipo_paquete_id, folio, peso)
+values
+(seq_paquete_id.nextval, 4, 'AF-P-001', 15);
+
+insert into paquete_vuelo
+(paquete_vuelo_id, vuelo_id, paquete_id)
+values
+(seq_paquete_vuelo_id.nextval, seq_vuelo_id.currval, seq_paquete_id.currval);
+
+
+
+-- VUELO DE CARGA Y PAQUETES
+insert into vuelo
+(vuelo_id, aeronave_id, numero_vuelo, sala_abordar, fecha_salida, fecha_llegada,
+aeropuerto_destino_id, aeropuerto_origen_id, estatus_vuelo_id)
+values
+(seq_vuelo_id.nextval, 3, seq_numero_vuelo.nextval, 10, to_date('2018/07/10 21:20','yyyy/mm/dd hh24:mi'),
+to_date('2018/07/11 00:20','yyyy/mm/dd hh24:mi'), 6,0,1);
+
+--Registrar en histórico
+insert into historico_estatus_vuelo
+(historico_estatus_vuelo_id, vuelo_id, estatus_vuelo_id, fecha_estatus)
+values
+(seq_historico_status_vuelo_id.nextval, seq_vuelo_id.currval, 1, to_date('10/01/2018','dd/mm/yyyy'))
+;
+
+--añadir paquete
+insert into paquete
+(paquete_id, tipo_paquete_id, folio, peso)
+values
+(seq_paquete_id.nextval, 3, 'AF-P-002', 10);
+
+insert into paquete_vuelo
+(paquete_vuelo_id, vuelo_id, paquete_id)
+values
+(seq_paquete_vuelo_id.nextval, seq_vuelo_id.currval, seq_paquete_id.currval);
+
+-- añadir paquete
+insert into paquete
+(paquete_id, tipo_paquete_id, folio, peso)
+values
+(seq_paquete_id.nextval, 4, 'AF-P-003', 14);
+
+insert into paquete_vuelo
+(paquete_vuelo_id, vuelo_id, paquete_id)
+values
+(seq_paquete_vuelo_id.nextval, seq_vuelo_id.currval, seq_paquete_id.currval);
+
+
+commit;
+>>>>>>> 43231b24a3337b2e94e5cfa8650da34f51940f40
