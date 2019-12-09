@@ -10,15 +10,15 @@ es_comercial number
 v_matricula varchar2(10);
 begin
 v_matricula := substr(modelo, 1, 3);
-if (es_carga,es_comercial) = (1,1) then
+if es_carga = 1 and es_comercial = 1 then
     v_matricula := v_matricula || '-CC-';
-if (es_carga,es_comercial) = (0,1) then
+elsif es_carga = 0 and es_comercial = 1 then
     v_matricula := v_matricula || '-CO-';
-if (es_carga,es_comercial) = (1,0) then
+elsif es_carga = 1 and es_comercial = 0 then
     v_matricula := v_matricula || '-CA-';
 end if;
 v_matricula := substr(modelo, length(modelo)-2);
-v_matricula := upper(v_matricula)
+v_matricula := upper(v_matricula);
 return v_matricula;
 end;
 /

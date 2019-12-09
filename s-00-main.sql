@@ -39,9 +39,12 @@ show errors
 @@s-10-consultas.sql
 @@s-11-tr-auditoria_asiento.sql
 @@s-11-tr-hist_status.sql
+@@s-11-tr-aeropuerto_log.sql
+@@s-12-tr-auditoria_asiento-prueba.sql
 @@s-13-p-actualizacion_vuelo.sql
 @@s-13-p-revision_empleado.sql
 @@s-15-fx-cache_aumento_sueldo.
 @@s-15-fx-obtener_matricula_aero.sql
 @@s-15-fx-obtener_rfc.sql
-@@s-17-lob-<nombre-programa>.sql
+@@s-17-lob-cargar_foto_empleado.sql
+@@resultados-proyecto-final.sql

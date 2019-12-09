@@ -147,7 +147,7 @@ create table pasajero_vuelo(
     folio_pase_abordar varchar2(38) null,
     asiento number(3,0) not null,
     atencion varchar2(2000) not null,
-    se_presento number(1,0) not null,
+    se_presento number(1,0) null,
     pasajero_id number(10,0) not null,
     vuelo_id number(38,0) not null,
     constraint pasajero_vuelo_pk primary key (pasajero_vuelo_id),

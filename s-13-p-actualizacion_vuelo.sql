@@ -10,28 +10,24 @@ create or replace procedure p_actualizacion_vuelo (p_num_vuelos_buenos out numbe
     cursor cur_vuelos is
     select vuelo_id, fecha_salida, fecha_llegada, estatus_vuelo_id, sala_abordar
     from vuelo
-    where to_char(fecha_salida, 'MM/YYYY') = to_char(sysdate, 'MM/YYYY')
+    where to_char(fecha_salida, 'MM/YYYY') = to_char(sysdate, 'MM/YYYY');
     begin
-    is not null
     for r in cur_vuelos loop    
-        if sysdate >= (r.fecha_salida-(15/1440)) 
-        and r.sala_abordar is not null then
+        if sysdate >= (r.fecha_salida-(15/1440)) and r.sala_abordar is not null then
             update vuelo set estatus_vuelo_id = 
                 (select estatus_vuelo_id 
                 from estatus_vuelo
                 where clave = 'ABORDANDO')
             where vuelo_id = r.vuelo_id;
             v_num_vuelos_buenos := v_num_vuelos_buenos + 1;
-        elsif sysdate >= (r.fecha_salida\) 
-        and r.sala_abordar is null then
+        elsif sysdate >= (r.fecha_salida) and r.sala_abordar is null then
             update vuelo set estatus_vuelo_id = 
                 (select estatus_vuelo_id 
                 from estatus_vuelo
                 where clave = 'DEMORADO')
             where vuelo_id = r.vuelo_id;
             v_num_vuelos_demorados := v_num_vuelos_demorados + 1;
-        elsif sysdate >= (r.fecha_salida+(15/1440)) 
-        and r.sala_abordar is null then
+        elsif sysdate >= (r.fecha_salida+(15/1440)) and r.sala_abordar is null then
             update vuelo set estatus_vuelo_id = 
                 (select estatus_vuelo_id 
                 from estatus_vuelo
@@ -47,9 +43,9 @@ create or replace procedure p_actualizacion_vuelo (p_num_vuelos_buenos out numbe
         end if;
 
     end loop;
-    p_num_vuelos_buenos := v_num_vuelos_buenos
-    p_num_vuelos_cancelados := v_num_vuelos_cancelados
-    p_num_vuelos_demorados := v_num_vuelos_demorados
+    p_num_vuelos_buenos := v_num_vuelos_buenos;
+    p_num_vuelos_cancelados := v_num_vuelos_cancelados;
+    p_num_vuelos_demorados := v_num_vuelos_demorados;
 end;
 /
 show errors

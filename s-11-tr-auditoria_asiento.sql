@@ -6,50 +6,51 @@ create sequence seq_auditoria_asiento
 start with 0
 increment by 1
 nomaxvalue 
+minvalue 0
 nocycle;
 
 create table auditoria_asiento(
-    auditoria_extraordinario_id number(10,0) not null,
+    auditoria_asiento_id number(10,0) not null,
     fecha_cambio date default sysdate,
-    usuario varchar2(40),
-    asiento_nuevo number(3,0) not null,
-    asiento_anterior number(3,0) not null
-    constraint auditoria_asiento_pk primary key (auditoria_extraordinario_id),
+    usuario varchar2(38) not null,
+    asiento_nuevo number(3,0) null,
+    asiento_anterior number(3,0) null,
+    pasajero_id number(10,0) null,
+    constraint auditoria_asiento_pk primary key (auditoria_asiento_id)
 );
 
 create or replace trigger tr_valida_asiento
   before update of asiento
-  or delete of asiento
+  or delete
   on pasajero_vuelo
   for each row 
 declare
     v_count  number;
 begin
   case
-  when upgrading ('asiento') then
-    insert into auditoria_asiento(auditoria_extraordinario_id, 
-      fecha_cambio, usuario, asiento_nuevo, asiento_anterior)
+  when updating ('asiento') then
+    insert into auditoria_asiento (auditoria_asiento_id, 
+      fecha_cambio, usuario, asiento_nuevo, asiento_anterior, pasajero_id)
       values(
-        auditoria_asiento_seq.nextval,
+        seq_auditoria_asiento.nextval,
         sysdate, 
         sys_context('USERENV','SESSION_USER'), 
-        :new.asiento
-        :old.asiento
+        :new.asiento,
+        :old.asiento,
+        :new.pasajero_id
       );
-    raise_application_error(-20011,
+    raise_application_error(-20010,
       'No se permiten modificar asientos asignados');
-  when deleting ('asiento') then
-    insert into auditoria_asiento(auditoria_extraordinario_id, 
-      fecha_cambio, usuario, asiento_nuevo, asiento_anterior)
+  when deleting then
+    insert into auditoria_asiento (auditoria_asiento_id, 
+      fecha_cambio, usuario, pasajero_id)
       values(
-        auditoria_asiento_seq.nextval,
+        seq_auditoria_asiento.nextval,
         sysdate, 
-        sys_context('USERENV','SESSION_USER'), 
-        :new.asiento
-        :old.asiento
+        sys_context('USERENV','SESSION_USER')
       );
     raise_application_error(-20011,
-      'No se permiten eliminar asientos asignados');
+      'No se permiten registros con vuelos');
   end case; 
 end;
 /
