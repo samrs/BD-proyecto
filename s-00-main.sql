@@ -1,4 +1,4 @@
---@Autor(es): Ramos Sanchez Samuel
+--@Autor(es): Ramos Sanchez Samuel y Riviera Nagano Alejandro
 --@Fecha creación: 08/12/2019
 --@Descripción: Inicia toda la base
 
@@ -36,3 +36,12 @@ show errors
 @@s-07-sinonimos.sql
 @@s-08-vistas.sql
 @@s-09-carga-inicial.sql
+@@s-10-consultas.sql
+@@s-11-tr-auditoria_asiento.sql
+@@s-11-tr-hist_status.sql
+@@s-13-p-actualizacion_vuelo.sql
+@@s-13-p-revision_empleado.sql
+@@s-15-fx-cache_aumento_sueldo.
+@@s-15-fx-obtener_matricula_aero.sql
+@@s-15-fx-obtener_rfc.sql
+@@s-17-lob-<nombre-programa>.sql
