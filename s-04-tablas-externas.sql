@@ -31,5 +31,6 @@ reject limit unlimited;
 !mkdir -p /tmp/bases
 !chmod 777 /tmp/bases
 !cp vuelo_ext.txt /tmp/bases
+!cp piloto.jpg /tmp/bases
 
 select * from vuelo_ext;
