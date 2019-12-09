@@ -101,6 +101,6 @@ values
 insert into puesto_empleado 
 (puesto_id, clave, nombre, descripcion, sueldo_mensual)
 values
-(5, 'AF-P', 'PILOTO', 'En vuelos comerciales, atender a los pasajeros', 120000);
+(5, 'AF-SOB', 'SOBRECARGOS', 'En vuelos comerciales, atender a los pasajeros', 120000);
 
 

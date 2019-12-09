@@ -32,6 +32,12 @@ increment by 1
 nomaxvalue 
 nocycle;
 
+create sequence seq_historico_status_vuelo_id
+start with 0
+increment by 1
+nomaxvalue 
+nocycle;
+
 create sequence seq_paquete_vuelo_id
 start with 0
 increment by 1
