@@ -4,6 +4,8 @@
 --Almacenar en una tabla los empleados a los que se les ha
 --aumentado el sueldo
 
+
+---ESTE ESTA MAL
 -- table: empleado_log 
 create table empleado_log(
     empleado_log_id number(10,0) not null,

@@ -1,18 +1,29 @@
 --@Autor(es): Ramos Sanchez Samuel
 --@Fecha creación: 08/12/2019
---@Descripción: 
+--@Descripción: Procedimiento almacena empleados respecto a sus puntos totales
 
-create or replace procedure p_revision_empleado (p_num_vuelos_buenos out number,
-p_num_vuelos_cancelados out number, p_num_vuelos_retrasados out number) is
-v_num_vuelos_buenos number:=0;
-v_num_vuelos_cancelados number:=0;
-v_num_vuelos_retrasados number:=0;
-cursor cur_vuelos is
-select vuelo_id, fecha_salida, fecha_llegada, estatus_vuelo_id
-from vuelo
-where to_char(fecha_salida, 'MM/YYYY') = to_char(sysdate, 'MM/YYYY')
+-- table: empleado_remunerado
+create table empleado_remunerado(
+    empleado_id number(10, 0) not null,
+    apellido_paterno varchar2(38) not null,
+    nombre varchar2(38) not null,
+    puntos_totales number(10, 0) not null,
+    constraint empleado_pk primary key (empleado_id)
+);
+
+create or replace procedure p_revision_empleado (p_num_empleados_renum out number,
+p_num_empleados_aten out number, p_num_empleados_otros out number) is
+v_num_remuneracion number:=500;
+v_num_atencion number:=10;
+v_num_empleados_aten number:=0;
+v_num_empleados_renum number:=0;
+v_num_empleados_otros number:=0;
+cursor cur_empleado is
+select em.empleado_id, em.nombre, em.apellido_paterno, em.puesto_id
+sum(tv.puntos) as puntos_totales
+from empleado em, tripulacion_vuelo tv
+group by em.empleado_id, em.nombre, em.apellido_paterno, em.puesto_id;
 begin 
-to_date('25/12/2018 23:59:59','dd/mm/yyyy hh24:mi:ss')
 for r in cur_empleado loop    
     if r.puntos_totales >= v_num_remuneracion then
         insert into empleado_remunerado
