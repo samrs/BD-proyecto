@@ -720,3 +720,55 @@ insert into pasajero
 (pasajero_id,apellido_paterno,apellido_materno,nombre,email,fecha_nacimiento, curp)
 values
 (seq_pasajero_id.nextval, 'GODINEZ', 'JIMENEZ', 'PATRICIA', 'patrigod@mail.com', to_date('720214','yymmdd'), 'GOJP720214MGRDMT05');
+
+
+
+
+
+
+
+
+-- INSERTANDO Y "LLENANDO" UN VUELO COMERCIAL
+insert into vuelo
+(vuelo_id, aeronave_id, numero_vuelo, sala_abordar, fecha_salida, fecha_llegada,
+aeropuerto_destino_id, aeropuerto_origen_id, estatus_vuelo_id)
+values(seq_vuelo_id.nextval, 1, seq_numero_vuelo.nextval, 75, to_date('05/05/2018 10:05','dd/mm/yyyy hh24:mi'), to_date('05/05/2018 12:35','dd/mm/yyyy hh24:mi'),
+4, 3, 1);
+insert into pasajero_vuelo
+(pasajero_vuelo_id, vuelo_id, pasajero_id, folio_pase_abordar, se_presento, asiento, atencion)
+values
+(seq_pasajero_vuelo_id.nextval, 0,0,'AFV-01-000', 1, 20, 'No requiere');
+insert into pase_abordar
+(pase_abordar_id, vuelo_id, pasajero_vuelo_id, fecha_impresion)
+values 
+(seq_pase_abordar_id.nextval, 0, 0,to_date('01/05/2018 10:50','dd/mm/yy hh24:mi'));
+insert into maleta
+(pasajero_vuelo_id, numero, peso)
+values
+(0,1, 20);
+
+insert into pasajero_vuelo
+(pasajero_vuelo_id, vuelo_id, pasajero_id, folio_pase_abordar, se_presento, asiento, atencion)
+values
+(seq_pasajero_vuelo_id.nextval, 0,1,'AFV-01-001', 1, 20, 'No requiere');
+insert into pase_abordar
+(pase_abordar_id, vuelo_id, pasajero_vuelo_id, fecha_impresion)
+values 
+(seq_pase_abordar_id.nextval, 0, 1,to_date('30/04/2018 10:50','dd/mm/yy hh24:mi'));
+insert into maleta
+(pasajero_vuelo_id, numero, peso)
+values
+(1,1, 20);
+
+insert into pasajero_vuelo
+(pasajero_vuelo_id, vuelo_id, pasajero_id, folio_pase_abordar, se_presento, asiento, atencion)
+values
+(seq_pasajero_vuelo_id.nextval, 0,2,'AFV-01-002', 1, 20, 'No requiere');
+insert into pase_abordar
+(pase_abordar_id, vuelo_id, pasajero_vuelo_id, fecha_impresion)
+values 
+(seq_pase_abordar_id.nextval, 0, 2,to_date('02/05/2018 10:50','dd/mm/yy hh24:mi'));
+insert into maleta
+(pasajero_vuelo_id, numero, peso)
+values
+(2,0, 0);
