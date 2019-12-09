@@ -13,7 +13,6 @@ create unique index ae_ubicacion_iuk on aeropuerto(latitud, longitud);
 create unique index ae_nombre_iuk on aeropuerto(nombre, clave);
 
 create unique index aero_matricula_iuk on aeronave(matricula, modelo);
-
 create unique index pa_folio_iuk on aeronave(folio);
 
 create unique index pa_email_iuk on pasajero(email);
