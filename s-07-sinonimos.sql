@@ -8,19 +8,19 @@ create or replace public synonym aeronave_carga for carga;
 create or replace public synonym pasajeros for pasajero_vuelo;
 
 prompt Otorgando permisos para hacer consultas a tablas
-grant select on vuelo to srs_proy_invitado;
-grant select on aeronave to srs_proy_invitado;
-grant select on aeropuerto to srs_proy_invitado;
+grant select on vuelo to rr_proy_invitado;
+grant select on aeronave to rr_proy_invitado;
+grant select on aeropuerto to rr_proy_invitado;
 
 prompt Conectar a invitado para crear sinonimo
-connect srs_proy_invitado;
-create or replace synonym vuelo for srs_proy_admin.vuelo;
-create or replace synonym aeronave for srs_proy_admin.aeronave;
-create or replace synonym aeropuerto for srs_proy_admin.aeropuerto;
+connect rr_proy_invitado;
+create or replace synonym vuelo for rr_proy_admin.vuelo;
+create or replace synonym aeronave for rr_proy_admin.aeronave;
+create or replace synonym aeropuerto for rr_proy_admin.aeropuerto;
 
-prompt Conectar a srs_proy_admin
+prompt Conectar a rr_proy_admin
 prompt Ingresar password:
-connect srs_proy_admin;
+connect rr_proy_admin;
 prompt Creando sinonimos con prefijos para tablas
 create or replace public synonym af_vuelo for vuelo;
 create or replace public synonym af_aeronave for aeronave;

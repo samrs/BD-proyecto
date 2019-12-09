@@ -9,18 +9,24 @@ connect sys as sysdba
 set serveroutput on
 --Este bloque anómimo valida la existencia del usuario, si existe lo elimina.
 declare
-v_count number(1,0);
+    v_count number(1,0);
 begin
-select count(*) into v_count
-from dba_users
-where username = 'rr_proy_admin';
-if v_count > 0 then
-    dbms_output.put_line('Eliminando usuario existente');
-    execute immediate 'drop user rr_proy_admin cascade';
-    execute immediate 'drop user rr_proy_invitado cascade';
-end if;
+    select count(*) into v_count
+    from dba_users
+    where username = 'RR_PROY_ADMIN';
+    if v_count > 0 then
+        dbms_output.put_line('Eliminando usuario existente');
+        execute immediate 'drop user rr_proy_admin cascade';
+        execute immediate 'drop user rr_proy_invitado cascade';
+        execute immediate 'drop role rol_admin';
+        execute immediate 'drop role rol_invitado';
+    else
+        dbms_output.put_line('No existe usuario');
+    end if;
 end;
 /
+show errors
+
 @@s-01-usuarios.sql
 @@s-02-entidades.sql
 @@s-03-tablas-temporales.sql

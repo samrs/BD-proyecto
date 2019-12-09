@@ -95,7 +95,7 @@ create table puesto(
     clave varchar2(38) not null,
     nombre varchar2(38) not null,
     descripcion varchar2(100) not null,
-    sueldo_mensual number(5,0) not null,
+    sueldo_mensual number(10,0) not null,
     constraint puesto_pk primary key (puesto_id)
 );
 

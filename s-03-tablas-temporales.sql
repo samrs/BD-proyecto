@@ -10,13 +10,13 @@ create global temporary table aeronave_temporal (
     pasajeros_ordinarios number(3,0) not null,
     pasajeros_discapacitados number(3,0) not null,
     pasajeros_vip number(3,0) not null,
-    pasajeros_total as ( pasajeros_ordinarios + pasajeros_discapacitados + pasajeros_vip) virtual,
     num_bodegas number(5,0) not null,
     ancho_bodega number(5,0) default 5,
     alto_bodega number(5,0) default 5,
-    capacidad_carga number(10,2) not null,
+    capacidad_carga number(10,2) not null
 ) on commit preserve rows;
 
+declare
 cursor cur_aeronave is
     select ae.aeronave_id, ae.matricula, ae.modelo, ae.especificaciones_pdf,
     co.pasajeros_ordinarios, co.pasajeros_discapacitados, co.pasajeros_vip,
@@ -30,7 +30,7 @@ cursor cur_aeronave is
     and ae.es_comercial = 1;
 begin
     for r in cur_aeronave loop
-        insert into aeronave_temporal (aeronave_id, matricula, especificaciones_pdf, 
+        insert into aeronave_temporal(aeronave_id, matricula, especificaciones_pdf, 
         pasajeros_ordinarios, pasajeros_discapacitados, pasajeros_vip, num_bodegas,
         capacidad_carga) 
         values(r.aeronave_id, r.matricula, r.especificaciones_pdf, 
