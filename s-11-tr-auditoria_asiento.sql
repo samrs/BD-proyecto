@@ -15,7 +15,7 @@ create table auditoria_asiento(
     usuario varchar2(38) not null,
     asiento_nuevo number(3,0) null,
     asiento_anterior number(3,0) null,
-    pasajero_id number(10,0) null,
+    pasajero_id number(10,0) not null,
     constraint auditoria_asiento_pk primary key (auditoria_asiento_id)
 );
 
@@ -29,6 +29,7 @@ declare
 begin
   case
   when updating ('asiento') then
+    dbms_output.put_line('Actualizando asiento');
     insert into auditoria_asiento (auditoria_asiento_id, 
       fecha_cambio, usuario, asiento_nuevo, asiento_anterior, pasajero_id)
       values(
@@ -39,16 +40,7 @@ begin
         :old.asiento,
         :new.pasajero_id
       );
-    raise_application_error(-20010,
-      'No se permiten modificar asientos asignados');
   when deleting then
-    insert into auditoria_asiento (auditoria_asiento_id, 
-      fecha_cambio, usuario, pasajero_id)
-      values(
-        seq_auditoria_asiento.nextval,
-        sysdate, 
-        sys_context('USERENV','SESSION_USER')
-      );
     raise_application_error(-20011,
       'No se permiten registros con vuelos');
   end case; 

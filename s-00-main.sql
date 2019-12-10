@@ -40,7 +40,8 @@ show errors
 @@s-11-tr-auditoria_asiento.sql
 @@s-11-tr-hist_status.sql
 @@s-11-tr-aeropuerto_log.sql
-@@s-12-tr-auditoria_asiento-prueba.sql
+--@@s-12-tr-auditoria_asiento-prueba.sql
+@@s-12-tr-hist_status-prueba.sql
 @@s-13-p-actualizacion_vuelo.sql
 @@s-13-p-revision_empleado.sql
 @@s-15-fx-cache_aumento_sueldo.

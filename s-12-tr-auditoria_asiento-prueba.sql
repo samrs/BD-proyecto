@@ -54,31 +54,6 @@ exception
     end if;
 end;
 /
-Prompt =================================================
-Prompt Prueba 3.
-Prompt Otra vez modificar un asiento
-Prompt =================================================
-declare
-	v_codigo number;
-	v_mensaje varchar2(1000);
-begin 
-    update pasajero_vuelo
-    set asiento = 1
-    where pasajero_id = 2;
-exception
-	when others then
-    v_codigo := sqlcode;
-    v_mensaje := sqlerrm;
-    dbms_output.put_line('Codigo:  ' || v_codigo);
-    dbms_output.put_line('Mensaje: ' || v_mensaje);
-    if v_codigo = -20010 then
-    	dbms_output.put_line('OK, prueba 3 Exitosa.');
-    else
-    	dbms_output.put_line('ERROR, se obtuvo excepción no esperada');
-    	raise;
-    end if;
-end;
-/
 
 Prompt Prueba concluida, Haciendo Rollback para limpiar la BD.
 rollback;

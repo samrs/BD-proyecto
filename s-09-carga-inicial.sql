@@ -722,24 +722,6 @@ values
 (seq_pasajero_id.nextval, 'GODINEZ', 'JIMENEZ', 'PATRICIA', 'patrigod@mail.com', to_date('720214','yymmdd'), 'GOJP720214MGRDMT05');
 
 
-<<<<<<< HEAD
-insert into vuelo
-(vuelo_id, aeronave_id, numero_vuelo, sala_abordar, fecha_salida, fecha_llegada, 
-aeropuerto_destino_id, aeropuerto_origen_id, estatus_vuelo_id)
-values
-(seq_vuelo_id.nextval, 1, seq_numero_vuelo.nextval, 20, to_date('25/12/2018 23:59','dd/mm/yyyy hh24:mi'),
-to_date('26/12/2018 01:59','dd/mm/yyyy hh24:mi'), 1, 2, 1);
-
-
-insert into pasajero_vuelo
-(pasajero_vuelo_id, folio_pase_abordar, asiento, atencion, se_presento, pasajero_id, vuelo_id)
-values
-(seq_pasajero_vuelo_id.nextval, 'HYER1459', 30, 'Ninguna', null, 1, 0);
-insert into pasajero_vuelo
-(pasajero_vuelo_id, folio_pase_abordar, asiento, atencion, se_presento, pasajero_id, vuelo_id)
-values
-(seq_pasajero_vuelo_id.nextval, 'AEFR1459', 25, 'Ninguna', null, 2, 0);
-=======
 
 
 
@@ -1023,4 +1005,3 @@ values
 
 
 commit;
->>>>>>> 43231b24a3337b2e94e5cfa8650da34f51940f40
