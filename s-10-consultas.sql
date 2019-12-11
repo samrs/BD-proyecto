@@ -1,4 +1,4 @@
---@Autor(es): Ramos Sanchez Samuel
+--@Autor(es): Ramos Sanchez Samuel y Riviera Nagano Alejandro
 --@Fecha creación: 08/12/2019
 --@Descripción: Consulta de datos
 
@@ -40,3 +40,9 @@ where fecha_nacimiento <=to_date('890627','yymmdd')
 intersect
 select * from pasajero
 where apellido_paterno = 'OLMOS';
+
+select * from aeronave_temporal;
+
+select * from vuelo_ext;
+
+select * from v_paquete_vuelo;

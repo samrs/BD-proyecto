@@ -48,7 +48,7 @@ begin
 	select count(*) into v_count
 	from historico_estatus_vuelo
 	where vuelo_id = v_vuelo_id;
-	if v_count = 2 then
+	if v_count >= 2 then
         dbms_output.put_line('OK, Prueba 2 Exitosa.');
     else 
         raise_application_error(-20001,

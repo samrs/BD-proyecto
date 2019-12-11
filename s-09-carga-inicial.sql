@@ -762,7 +762,6 @@ insert into tripulacion_vuelo
 values
 (seq_tripulacion_vuelo_id.nextval, seq_vuelo_id.currval, 3, 10);
 
-
 --sobrecargo
 insert into tripulacion_vuelo
 (tripulacion_vuelo_id, vuelo_id, empleado_id, puntos)

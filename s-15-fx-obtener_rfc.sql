@@ -12,7 +12,6 @@ homoclave varchar2
 v_rfc varchar2(13);
 begin
 v_rfc := substr(apellido_paterno, 1, 2) 
-|| substr(apellido_paterno, 1, 2)
 || substr(apellido_materno, 1, 1)
 || substr(nombre, 1, 1)
 || to_char(fecha_nacimiento, 'YYMMDD')

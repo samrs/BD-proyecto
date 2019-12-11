@@ -21,8 +21,9 @@ create or replace procedure p_cargar_foto_empleado(p_empleado_id in number,
         ||' no existe en el directorio DATA_DIR'
         ||' o el archivo esta abierto');
     end if;
-    update empleado set foto = empty_blob()
-        where empleado_id = p_empleado_id;
+    update empleado 
+    set foto = empty_blob()
+    where empleado_id = p_empleado_id;
 
     select foto into v_dest_blob
     from empleado

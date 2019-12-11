@@ -121,7 +121,7 @@ alter table empleado
 -- table: tripulacion_vuelo 
 create table tripulacion_vuelo(
     tripulacion_vuelo_id number(10,0) not null,
-    puntos number(3, 0) not null,
+    puntos number(3, 0) null,
     empleado_id number(10,0) not null,
     vuelo_id number(38, 0) not null,
     constraint tripulacion_vuelo_pk primary key (tripulacion_vuelo_id),

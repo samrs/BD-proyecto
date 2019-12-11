@@ -39,5 +39,4 @@ begin
     end loop;
 end;
 /
-
-select * from aeronave_temporal;
+show errors

@@ -1,4 +1,4 @@
---@Autor(es): Ramos Sanchez Samuel
+--@Autor(es): Ramos Sanchez Samuel y Riviera Nagano Alejandro
 --@Fecha creación: 07/12/2019
 --@Descripción: Creacion de vistas
 
